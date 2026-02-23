@@ -5,7 +5,7 @@ const db = require("./config/db");
 
 //files to import for routes
 const authRoutes = require("./routes/authRoute");
-const adminRoutes = require("./routes/adminRoute");
+const adminRoutes = require("./routes/admin/adminRoute");
 const profileRoutes = require("./routes/profileRoute");
 
 

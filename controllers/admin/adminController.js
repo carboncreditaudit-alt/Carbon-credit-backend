@@ -1,4 +1,4 @@
-const adminModel = require("../models/adminModel");
+const adminModel = require("../../models/admin/adminModel");
 
 // Get pending users
 exports.getPendingUsers = async (req, res) => {
