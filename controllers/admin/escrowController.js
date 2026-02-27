@@ -1,4 +1,4 @@
-const orderModel = require("../../models/admin/adminModel");
+const orderModel = require("../../models/company/orderModel");
 
 // GET /api/admin/escrow
 exports.getEscrowOrders = async (req, res) => {
