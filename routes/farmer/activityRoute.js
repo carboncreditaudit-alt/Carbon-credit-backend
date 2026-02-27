@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
-const upload = require("../middleware/uploadMiddleware");
-const activityController = require("../controllers/activityController");
+const authMiddleware = require("../../middleware/authMiddleware");
+const upload = require("../../middleware/uploadMiddleware");
+const activityController = require("../../controllers/farmer/activityController");
 
 // All routes require authentication
 router.use(authMiddleware);

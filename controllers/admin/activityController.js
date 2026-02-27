@@ -1,4 +1,4 @@
-const activityModel = require("../../models/activityModel");
+const activityModel = require("../../models/farmer/activityModel");
 
 // Helper: credit rate per acre
 const estimateCredits = (activityType, areaCovered) => {

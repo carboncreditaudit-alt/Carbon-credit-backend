@@ -1,4 +1,4 @@
-const db = require("../config/db");
+const db = require("../../config/db");
 
 // ─── NGO: Create a new carbon project ─────────────────────────
 exports.createProject = async (ngoUserId, data) => {

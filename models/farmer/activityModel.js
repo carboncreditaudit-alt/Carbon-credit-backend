@@ -1,4 +1,4 @@
-const db = require("../config/db");
+const db = require("../../config/db");
 
 // ─── FARMER: Submit activity ───────────────────────────────────
 exports.createActivity = async (userId, data) => {

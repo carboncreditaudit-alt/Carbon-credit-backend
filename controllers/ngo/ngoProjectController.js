@@ -1,4 +1,4 @@
-const ngoProjectModel = require("../models/ngoProjectModel");
+const ngoProjectModel = require("../../models/ngo/ngoProjectModel");
 const path = require("path");
 
 // ─── Credit estimation for NGO projects ───────────────────────

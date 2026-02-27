@@ -1,4 +1,4 @@
-const ngoProjectModel = require("../../models/ngoProjectModel");
+const ngoProjectModel = require("../../models/ngo/ngoProjectModel");
 
 // ─── Credit estimation ─────────────────────────────────────────
 const estimateCredits = (projectType, areaCovered) => {

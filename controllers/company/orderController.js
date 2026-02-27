@@ -1,4 +1,4 @@
-const orderModel = require("../models/orderModel");
+const orderModel = require("../../models/orderModel");
 
 // ─── POST /api/orders ─────────────────────────────────────────
 exports.createOrder = async (req, res) => {

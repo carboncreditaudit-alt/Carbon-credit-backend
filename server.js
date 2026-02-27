@@ -2,18 +2,22 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const db = require("./config/db");
-
-//files to import for routes
 const authRoutes = require("./routes/authRoute");
-const adminRoutes = require("./routes/admin/adminRoute");
 const profileRoutes = require("./routes/profileRoute");
-const activityRoutes = require("./routes/activityRoute");
-const ngoProjectRoutes = require("./routes/ngoProjectRoute");
 const walletRoutes = require("./routes/walletRoute");
-const listingRoutes = require("./routes/listingRoute");
-const orderRoutes = require("./routes/orderRoute");
-const retirementRoutes = require("./routes/retirementRoute");
 const disputeRoutes = require("./routes/disputeRoute");
+const listingRoutes = require("./routes/listingRoute");
+const ngoProjectRoutes = require("./routes/ngo/ngoProjectRoute");
+const farmerActivityRoutes = require("./routes/farmer/farmerActivityRoute");
+const companyOrderRoutes = require("./routes/company/orderRoute");
+const adminActivityRoutes = require("./routes/admin/activityRoute");
+const adminDisputeRoutes = require("./routes/admin/disputeRoute");
+const adminEscrowRoutes = require("./routes/admin/escrowRoute");
+const adminListingRoutes = require("./routes/admin/listingRoute");
+const adminNgoProjectRoutes = require("./routes/admin/ngoProjectRoute");
+const adminReportRoutes = require("./routes/admin/reportRoute");
+const adminUserRoutes = require("./routes/admin/userRoute");
+const adminWalletRoutes = require("./routes/admin/walletRoute");
 
 
 const app = express();
@@ -23,18 +27,33 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
-//Root Api routes
+//common routes that all users can access
 app.use("/api/auth", authRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/profile", profileRoutes);
-app.use("/api/activities", activityRoutes);
-app.use("/api/ngo/projects", ngoProjectRoutes);
-app.use("/api/wallet", walletRoutes);
-app.use("/api/listings", listingRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/retirement", retirementRoutes);
 app.use("/api/disputes", disputeRoutes);
+app.use("/api/wallet", walletRoutes);
+app.use("/api/profile", profileRoutes);
+app.use("/api/listing", listingRoutes);
 
+
+// NGO routes
+app.use("/api/ngo/projects", ngoProjectRoutes);
+
+
+//farmer routes
+app.use("/api/farmer/activity", farmerActivityRoutes);
+
+//company routes
+app.use("/api/company/orders", companyOrderRoutes);
+
+//Admin routes
+app.use("/api/admin/activity", adminActivityRoutes);
+app.use("/api/admin/disputes", adminDisputeRoutes);
+app.use("/api/admin/escrow", adminEscrowRoutes);
+app.use("/api/admin/listings", adminListingRoutes);
+app.use("/api/admin/ngo-projects", adminNgoProjectRoutes);
+app.use("/api/admin/reports", adminReportRoutes);
+app.use("/api/admin/users", adminUserRoutes);
+app.use("/api/admin/wallets", adminWalletRoutes);
 
 // Health check route
 app.get("/", (req, res) => {

@@ -1,4 +1,4 @@
-const activityModel = require("../models/activityModel");
+const activityModel = require("../../models/farmer/activityModel");
 const path = require("path");
 
 // ─── Helper: Estimate credits based on activity type + area ───
