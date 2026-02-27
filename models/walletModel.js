@@ -3,9 +3,13 @@ const db = require("../config/db");
 // ─── Get wallet balance ────────────────────────────────────────
 exports.getWallet = async (userId) => {
     const [rows] = await db.execute(
-        `SELECT user_id, balance, created_at AS updated_at
-     FROM credit_wallets
-     WHERE user_id = ?`,
+        `SELECT
+            cw.user_id,
+            cw.balance,
+            cw.created_at AS updated_at,
+            (SELECT COALESCE(SUM(seller_payout), 0) FROM orders WHERE seller_id = cw.user_id AND status = 'COMPLETED') AS fiat_balance
+         FROM credit_wallets cw
+         WHERE cw.user_id = ?`,
         [userId]
     );
     return rows[0];
@@ -50,6 +54,18 @@ exports.getTransactions = async (userId) => {
         [userId]
     );
 
+    // Fiat earned from released escrow
+    const [fiatEarnings] = await db.execute(
+        `SELECT
+       'FIAT_EARNED'        AS type,
+       seller_payout        AS amount,
+       CONCAT('Payment received from Escrow for Order #', id) AS description,
+       released_at          AS created_at
+     FROM orders
+     WHERE seller_id = ? AND status = 'COMPLETED'`,
+        [userId]
+    );
+
     // Credits purchased (incoming for company)
     const [purchases] = await db.execute(
         `SELECT
@@ -81,6 +97,7 @@ exports.getTransactions = async (userId) => {
         ...sales,
         ...purchases,
         ...retirements,
+        ...fiatEarnings,
     ].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
     return all;

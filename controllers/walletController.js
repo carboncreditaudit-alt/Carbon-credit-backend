@@ -10,7 +10,8 @@ exports.getBalance = async (req, res) => {
 
         res.json({
             user_id: wallet.user_id,
-            balance: parseFloat(wallet.balance || 0),
+            balance: parseFloat(wallet.balance || 0), // Carbon credits
+            fiat_balance: parseFloat(wallet.fiat_balance || 0), // USD
             updated_at: wallet.updated_at,
         });
     } catch (err) {
