@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
+const authMiddleware = require("../../middleware/authMiddleware");
 const ngoProjectController = require("../../controllers/admin/ngoProjectController");
 
 
@@ -18,3 +18,5 @@ router.get("/ngo/projects/pending", ngoProjectController.getPendingProjects);  /
 router.get("/ngo/projects/:id", ngoProjectController.getProjectById);      // Project detail
 router.patch("/ngo/projects/:id/approve", ngoProjectController.approveProject);      // Approve → issue credits
 router.patch("/ngo/projects/:id/reject", ngoProjectController.rejectProject);       // Reject with reason
+
+module.exports = router;

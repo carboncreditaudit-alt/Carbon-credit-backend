@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
+const authMiddleware = require("../../middleware/authMiddleware");
 const walletController = require("../../controllers/walletController");
 
 
@@ -14,3 +14,5 @@ router.use((req, res, next) => {
 
 // ─── Wallet & Credits (Admin) ──────────────────────────────
 router.get("/wallet/:userId", walletController.getAdminWallet); // View any user's wallet
+
+module.exports = router;

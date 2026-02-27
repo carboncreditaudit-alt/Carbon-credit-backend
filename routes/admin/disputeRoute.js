@@ -16,3 +16,5 @@ router.use((req, res, next) => {
 router.get("/disputes", disputeController.getAllDisputes);     // All disputes (?status=OPEN|RESOLVED|CLOSED)
 router.patch("/disputes/:id/resolve", disputeController.resolveDispute);    // Resolve with decision
 router.patch("/disputes/:id/close", disputeController.closeDispute);      // Close dispute
+
+module.exports = router;

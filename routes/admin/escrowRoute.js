@@ -16,3 +16,5 @@ router.use((req, res, next) => {
 router.get("/escrow", escrowController.getEscrowOrders);    // All escrow-held orders
 router.patch("/escrow/:orderId/release", escrowController.releaseEscrow);      // Release → seller paid
 router.patch("/escrow/:orderId/refund", escrowController.refundBuyer);        // Refund buyer
+
+module.exports = router;

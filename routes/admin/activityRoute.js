@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
+const authMiddleware = require("../../middleware/authMiddleware");
 const activityController = require("../../controllers/admin/activityController");
 
 
@@ -18,3 +18,5 @@ router.get("/activities/:id", activityController.getActivityById);       // View
 router.patch("/activities/:id/approve", activityController.approveActivity);
 router.patch("/activities/:id/reject", activityController.rejectActivity);
 router.patch("/activities/:id/request-proof", activityController.requestMoreProof);
+
+module.exports = router;

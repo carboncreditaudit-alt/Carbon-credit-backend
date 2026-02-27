@@ -18,3 +18,5 @@ router.get("/reports/marketplace", reportsController.getMarketplaceReport);
 router.get("/reports/users", reportsController.getUserStats);
 router.get("/reports/commission", reportsController.getCommissionSummary);
 router.get("/reports/compliance", reportsController.getComplianceReport);
+
+module.exports = router;

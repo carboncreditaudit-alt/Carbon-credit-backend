@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
-const upload = require("../middleware/uploadMiddleware");
-const ngoProjectController = require("../controllers/ngo/ngoProjectController");
+const authMiddleware = require("../../middleware/authMiddleware");
+const upload = require("../../middleware/uploadMiddleware");
+const ngoProjectController = require("../../controllers/ngo/ngoProjectController");
 
 // All routes require authentication
 router.use(authMiddleware);

@@ -2,14 +2,19 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const db = require("./config/db");
+
 const authRoutes = require("./routes/authRoute");
 const profileRoutes = require("./routes/profileRoute");
 const walletRoutes = require("./routes/walletRoute");
 const disputeRoutes = require("./routes/disputeRoute");
 const listingRoutes = require("./routes/listingRoute");
+
 const ngoProjectRoutes = require("./routes/ngo/ngoProjectRoute");
-const farmerActivityRoutes = require("./routes/farmer/farmerActivityRoute");
+
+const farmerActivityRoutes = require("./routes/farmer/activityRoute");
+
 const companyOrderRoutes = require("./routes/company/orderRoute");
+
 const adminActivityRoutes = require("./routes/admin/activityRoute");
 const adminDisputeRoutes = require("./routes/admin/disputeRoute");
 const adminEscrowRoutes = require("./routes/admin/escrowRoute");

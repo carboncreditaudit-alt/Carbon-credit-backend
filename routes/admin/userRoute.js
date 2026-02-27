@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../../controllers/admin/userController");
+const authMiddleware = require("../../middleware/authMiddleware");
 
 router.use(authMiddleware);
 router.use((req, res, next) => {
@@ -24,3 +25,5 @@ router.get("/users/:id/kyc", userController.getUserKyc);         // View a user'
 router.get("/kyc/pending", userController.getPendingKyc);     // All pending KYC submissions
 router.patch("/kyc/:userId/approve", userController.approveKyc);        // Approve KYC
 router.patch("/kyc/:userId/reject", userController.rejectKyc);   
+
+module.exports = router;

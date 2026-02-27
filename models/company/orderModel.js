@@ -1,4 +1,4 @@
-const db = require("../config/db");
+const db = require("../../config/db");
 
 // ─── Create order (escrow hold) ───────────────────────────────
 exports.createOrder = async (buyerId, data) => {
