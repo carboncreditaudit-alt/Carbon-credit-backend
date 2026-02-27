@@ -2,10 +2,11 @@ const db = require("../config/db");
 
 // Create user
 exports.createUser = async (email, phone, passwordHash, role) => {
+  const initialStatus = role === "ADMIN" ? "ACTIVE" : "PENDING";
   const [result] = await db.execute(
     `INSERT INTO users (email, phone, password_hash, role, status)
-     VALUES (?, ?, ?, ?, 'PENDING')`,
-    [email, phone, passwordHash, role]
+     VALUES (?, ?, ?, ?, ?)`,
+    [email, phone || null, passwordHash, role, initialStatus]
   );
   return result.insertId;
 };
@@ -15,7 +16,7 @@ exports.createFarmerProfile = async (userId, profile) => {
   await db.execute(
     `INSERT INTO farmers (user_id, land_size, location, bank_account)
      VALUES (?, ?, ?, ?)`,
-    [userId, profile.land_size, profile.location, profile.bank_account]
+    [userId, profile?.land_size || null, profile?.location || null, profile?.bank_account || null]
   );
 };
 
@@ -24,7 +25,7 @@ exports.createNgoProfile = async (userId, profile) => {
   await db.execute(
     `INSERT INTO ngos (user_id, organization_name, registration_number)
      VALUES (?, ?, ?)`,
-    [userId, profile.organization_name, profile.registration_number]
+    [userId, profile?.organization_name || null, profile?.registration_number || null]
   );
 };
 
@@ -33,7 +34,7 @@ exports.createCompanyProfile = async (userId, profile) => {
   await db.execute(
     `INSERT INTO companies (user_id, company_name, esg_document_url)
      VALUES (?, ?, ?)`,
-    [userId, profile.company_name, profile.esg_document_url]
+    [userId, profile?.company_name || null, profile?.esg_document_url || null]
   );
 };
 

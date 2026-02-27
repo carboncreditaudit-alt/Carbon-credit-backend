@@ -1,0 +1,96 @@
+
+═══════════════════════════════════════════════════
+  Carbon Credit Marketplace — API Test Suite
+═══════════════════════════════════════════════════
+
+── 0. Health Check
+  ✔ GET /../  [200]
+
+── 1. Auth — Register & Login
+  ✔ POST /auth/register  [201]
+  ✔ POST /auth/register  [201]
+  ✔ POST /auth/register  [201]
+  ✔ POST /auth/register  [201]
+  ✔ POST /auth/login  [200]
+
+── 3. Admin — User Verification
+  ✔ GET /admin/users/pending  [200]
+  ✔ GET /admin/users  [200]
+  ✔ GET /admin/users/30013  [200]
+  ✔ PATCH /admin/users/30013/approve  [200]
+  ✔ PATCH /admin/users/30014/approve  [200]
+  ✔ PATCH /admin/users/30015/approve  [200]
+  ✔ POST /auth/login  [200]
+  ✔ POST /auth/login  [200]
+  ✔ POST /auth/login  [200]
+
+── 2. Profile & KYC
+  ✔ GET /profile/me  [200]
+  ✔ PUT /profile/me  [200]
+  ✔ GET /profile/kyc/status  [404]
+  ✔ POST /profile/terms/accept  [200]
+
+── 4. Carbon Activity (Farmer)
+  ✔ POST /activities  [201]
+  ✔ GET /activities  [200]
+  ✔ GET /activities/30004  [200]
+  ✔ GET /activities/30004/estimate  [200]
+
+── 4b. Admin — Activity Verification
+  ✔ GET /admin/activities/pending  [200]
+  ✔ PATCH /admin/activities/30004/approve  [200]
+
+── 5. NGO Carbon Projects
+  ✔ POST /ngo/projects  [201]
+  ✔ GET /ngo/projects  [200]
+  ✔ GET /ngo/projects/30004  [200]
+  ✔ POST /ngo/projects/30004/aggregate-farmers  [200]
+
+── 5b. Admin — NGO Project Verification
+  ✔ GET /admin/ngo/projects/pending  [200]
+  ✔ PATCH /admin/ngo/projects/30004/approve  [200]
+
+── 6. Wallet & Credits
+  ✔ GET /wallet/balance  [200]
+  ✔ GET /wallet/transactions  [200]
+  ✔ GET /wallet/credits  [200]
+  ✔ GET /admin/wallet/30013  [200]
+
+── 7. Marketplace Listings
+  ✔ POST /listings  [201]
+  ✔ GET /listings  [200]
+  ✔ GET /listings/4  [200]
+  ✔ GET /listings?credit_type=TREE_PLANTATION  [200]
+  ✔ GET /listings?seller_role=FARMER  [200]
+  ✔ GET /admin/listings/pending  [200]
+  ✔ PATCH /admin/listings/4/approve  [200]
+  ✔ PUT /listings/4  [200]
+  ✔ POST /orders  [201]
+  ✔ GET /orders  [200]
+  ✔ GET /orders/4  [200]
+  ✔ PUT /orders/4/confirm  [200]
+  ✔ GET /admin/escrow  [200]
+  ✔ PATCH /admin/escrow/4/release  [200]
+  ✔ POST /retirement  [201]
+  ✔ GET /retirement  [200]
+  ✔ GET /retirement/4  [200]
+  ✔ GET /retirement/4/certificate  [200]
+  ✔ GET /retirement/4/esg-report  [200]
+  ✔ GET /admin/retirements  [200]
+  ✔ POST /disputes  [201]
+  ✔ GET /disputes  [200]
+  ✔ GET /disputes/4  [200]
+  ✔ GET /admin/disputes  [200]
+  ✔ PATCH /admin/disputes/4/resolve  [200]
+  ✔ GET /admin/reports/dashboard  [200]
+  ✔ GET /admin/reports/credits-issued  [200]
+  ✔ GET /admin/reports/marketplace  [200]
+  ✔ GET /admin/reports/users  [200]
+  ✔ GET /admin/reports/commission  [200]
+  ✔ GET /admin/reports/compliance  [200]
+  ✔ POST /activities  [403]
+  ✔ POST /listings  [403]
+  ✔ POST /retirement  [403]
+  ✔ POST /orders  [403]
+  ✔ POST /auth/login  [404]
+  ✔ GET /listings/99999  [404]
