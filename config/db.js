@@ -18,6 +18,13 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
+
+  // ✅ Increased timeout for TiDB cold start
+  connectTimeout: 15000,
+
+  // ✅ Keep connections alive (prevents idle disconnect)
+  enableKeepAlive: true,
+  keepAliveInitialDelay: 10000,
 });
 
 // Export the pool for use in other files
